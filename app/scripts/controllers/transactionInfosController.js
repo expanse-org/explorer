@@ -15,7 +15,7 @@ angular.module('ethExplorer')
                 getTransactionInfos()
                     .then(function(result){
                         //TODO Refactor this logic, asynchron calls + services....
-                        var number = web3.eth.blockNumber;
+                        var number = web3.exp.blockNumber;
 
                     $scope.result = result;
 
@@ -49,7 +49,7 @@ angular.module('ethExplorer')
                     }
                         //TODO Refactor this logic, asynchron calls + services....
                     if($scope.blockNumber!==undefined){
-                        var info = web3.eth.getBlock($scope.blockNumber);
+                        var info = web3.exp.getBlock($scope.blockNumber);
                         if(info!==undefined){
                             $scope.time = info.timestamp;
                         }
@@ -69,7 +69,7 @@ angular.module('ethExplorer')
             function getTransactionInfos(){
                 var deferred = $q.defer();
 
-                web3.eth.getTransaction($scope.txId,function(error, result) {
+                web3.exp.getTransaction($scope.txId,function(error, result) {
                     if(!error){
                         deferred.resolve(result);
                     }
