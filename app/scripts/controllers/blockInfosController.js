@@ -12,7 +12,7 @@ angular.module('ethExplorer')
 
                 getBlockInfos()
                     .then(function(result){
-                        var number = web3.eth.blockNumber;
+                        var number = web3.exp.blockNumber;
 
                     $scope.result = result;
 
@@ -48,7 +48,7 @@ angular.module('ethExplorer')
                         }
                     }
                     if($scope.blockNumber!==undefined){
-                        var info = web3.eth.getBlock($scope.blockNumber);
+                        var info = web3.exp.getBlock($scope.blockNumber);
                         if(info!==undefined){
                             var newDate = new Date();
                             newDate.setTime(info.timestamp*1000);
@@ -70,7 +70,7 @@ angular.module('ethExplorer')
             function getBlockInfos(){
                 var deferred = $q.defer();
 
-                web3.eth.getBlock   ($scope.blockId,function(error, result) {
+                web3.exp.getBlock   ($scope.blockId,function(error, result) {
                     if(!error){
                         deferred.resolve(result);
                     }
